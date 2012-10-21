@@ -106,4 +106,8 @@ Public Class AddUser
     Protected Sub cmdGet_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdGet.Click
         getData()
     End Sub
+
+    Protected Sub txtAge_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtAge.TextChanged
+
+    End Sub
 End Class

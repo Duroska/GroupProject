@@ -41,15 +41,6 @@ Partial Public Class AddUser
     Protected WithEvents txtID As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Label7 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label7 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''dlstTitle control.
     '''</summary>
     '''<remarks>
@@ -59,6 +50,24 @@ Partial Public Class AddUser
     Protected WithEvents dlstTitle As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''TextBox1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''access0 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents access0 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Label1 control.
     '''</summary>
     '''<remarks>
@@ -66,15 +75,6 @@ Partial Public Class AddUser
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''txtName control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Label2 control.
@@ -95,42 +95,6 @@ Partial Public Class AddUser
     Protected WithEvents txtPass As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Label3 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label3 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''txtFname control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtFname As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Label4 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label4 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''txtLname control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtLname As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
     '''Label8 control.
     '''</summary>
     '''<remarks>
@@ -149,13 +113,13 @@ Partial Public Class AddUser
     Protected WithEvents txtAge As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''vldNumber control.
+    '''access control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents vldNumber As Global.System.Web.UI.WebControls.RegularExpressionValidator
+    Protected WithEvents access As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Label5 control.
