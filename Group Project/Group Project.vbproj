@@ -90,6 +90,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="AddtoCart.aspx" />
     <Content Include="AddUser.aspx" />
     <Content Include="App_Data\Electronics.mdf" />
     <Content Include="App_Data\Electronics_log.ldf">
@@ -136,6 +137,13 @@
     <Compile Include="Account\Register.aspx.vb">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="AddtoCart.aspx.designer.vb">
+      <DependentUpon>AddtoCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddtoCart.aspx.vb">
+      <DependentUpon>AddtoCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AddUser.aspx.designer.vb">
       <DependentUpon>AddUser.aspx</DependentUpon>
