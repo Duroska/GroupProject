@@ -1,25 +1,12 @@
 ﻿Imports System.Data.SqlClient
-'the above import MUST be done to get all the functions needed
+Imports System.Security.Cryptography
 
 Public Class AddUser
     Inherits System.Web.UI.Page
-    ' Here we see all the object declared to gain acess to the database
-
-    'This first line is WHERE the database is.  take note of DataDirectory.  that specifies the directory
-    'It's curently set to root.  just copy past it
     Private constring As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|Electronics.mdf;Integrated Security=True;User Instance=True"
-
-    'This string variable will be used to store the SQL command instruction
     Private sql As String
-
-    'this variable will connect to the database itself.  opening a "tunnel" to it
     Private connect As SqlConnection
-
-    'This variable will handle the commands passed to the database
     Private cmd As SqlCommand
-
-    'Datareader is the Object that will read and store ALL information returend from
-    'the database after a query was excecuted.  It will be blank if no data returns
     Private dr As SqlDataReader
 
 
@@ -28,36 +15,46 @@ Public Class AddUser
     End Sub
 
     Protected Sub cmdAdd_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdAdd.Click
-        'we first contruct the Strign variable with the SQL command, normal SQL laws apply, including order
-        sql = "INSERT INTO Users VALUES ('" & txtID.Text & "', '" & dlstTitle.SelectedValue & "'" _
-            & ", '" & txtName.Text & "', '" & txtPass.Text & "', '" & txtFname.Text & "'" _
-            & ", '" & txtLname.Text & "', " & txtAge.Text & ", '" & txtAdress.Text & "');"
+        lblGet.Visible = False
+        If checkifthere(txtName.Text) Then
 
-        'Now we connect to the database, post the query to the database and execute it. 
-        'Then we close and kill the connection
-
-        connect = New SqlConnection(constring)      'we create the "tunnel"
-        cmd = New SqlCommand(sql)                   'we create the query
-        cmd.CommandType = CommandType.Text          'this needs to be done because Microsoft is full of s@#$
-        cmd.Connection = connect                    'an SQL command can store the conection
-        cmd.Connection.Open()                       'we open the connection. the database has now been connected
-        cmd.ExecuteNonQuery()                       'we execute the quary.  make sure its "Non" query
-
-        cmd.Connection.Close()                      'close the connection and release the database file
-        cmd.Connection.Dispose()                    'clear the resources used.  ONLY do this when you are finished with the database
-        cmd.Dispose()                               'clear resources
+            sql = "INSERT INTO Users VALUES ('" & txtID.Text & "', '" & dlstTitle.SelectedValue & "'" _
+                & ", '" & txtName.Text & "', '" & GenerateHash(txtPass.Text) & "', '" & txtFname.Text & "'" _
+                & ", '" & txtLname.Text & "', " & txtAge.Text & ", '" & txtAdress.Text & "', " & chkadmin.Checked & ");"
 
 
-        'No data is read back, since the connection just simply posts data.
-        'The system will crash if there was a problem
-        'there is no need to for code against that, we can later just add validation of Data on THIS end 
-        'before posting data to the database
+            connect = New SqlConnection(constring)
+            cmd = New SqlCommand(sql)
+            cmd.CommandType = CommandType.Text
+            cmd.Connection = connect
+            cmd.Connection.Open()
+            cmd.ExecuteNonQuery()
+
+            cmd.Connection.Close()
+            cmd.Connection.Dispose()
+            cmd.Dispose()
+
+            lblreg.Text = "User Added to the database"
+            lblreg.ForeColor = Drawing.Color.Green
+            lblreg.Visible = True
+
+        ElseIf checkifIDthere(txtID.Text) Then
+            lblreg.Text = "User ID Already in database"
+            lblreg.ForeColor = Drawing.Color.Red
+            lblreg.Visible = True
+
+        Else
+            lblreg.Text = "User login Name Already in database"
+            lblreg.ForeColor = Drawing.Color.Red
+            lblreg.Visible = True
+        End If
+
+
     End Sub
 
 
-    'this will demonstrate reading data from the database
     Private Sub getData()
-        'same procedure as last (roughly)
+        lblreg.Visible = False
         sql = "Select * From Users Where UserID ='" & txtID.Text & "';"
         connect = New SqlConnection(constring)
         cmd = New SqlCommand(sql)
@@ -66,40 +63,26 @@ Public Class AddUser
         cmd.Connection.Open()
         cmd.ExecuteNonQuery()
 
-        'The Execute reader returns a DataReader object. this is but 1 of a few methods of doing it
-        'commandBehavior just tells it to kill itself when DataReader is finished
-        dr = cmd.ExecuteReader(CommandBehavior.CloseConnection)
 
-        'Now we check to see if something came back
-        'true if something came back. false if there is lituratly nothing that came back
-        'false will happen when posting data, regardless of success, and if the rows weren't found
+        dr = cmd.ExecuteReader(CommandBehavior.CloseConnection)
         If dr.HasRows Then
-            'this must be done. this will kick start the reading process
-            'one row at a time will be read from returned data with each .Read()
             dr.Read()
 
-            txtName.Text = dr("UsrLogin")       'we use coloumb names. order does not matter
+            txtName.Text = dr("UsrLogin")
             txtAdress.Text = dr("Adress")
             txtAge.Text = dr("Age")
             txtFname.Text = dr("Fname")
             txtLname.Text = dr("Lname")
             txtPass.Text = dr("Pass")
             dlstTitle.SelectedValue = dr("Title")
-
+        Else
+            lblGet.Text = "I can't find a user with that ID"
         End If
 
-        dr.Close()      'this will also close the connection, by way of the CommandBehavior we set
+        dr.Close()
         cmd.Connection.Dispose()
         cmd.Dispose()
 
-        'this will never run
-        If False Then
-            Do While dr.Read()
-                'this loop will run as long as there are rows in the DataReader
-                'there is no real need to check if there are rows, .Read() has an optional boolean return
-                'on each iteration of of the while loop, we move through the rows returned
-            Loop
-        End If
 
     End Sub
 
@@ -107,7 +90,58 @@ Public Class AddUser
         getData()
     End Sub
 
-    Protected Sub txtAge_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtAge.TextChanged
+    Private Function checkifthere(ByVal user As String) As Boolean
+        sql = "Select * From Users Where UsrLogin = '" & user & "';"
+        Dim command As SqlCommand = New SqlCommand(sql)
+        command.CommandType = CommandType.Text
+        command.Connection = New SqlConnection(constring)
+        command.Connection.Open()
+        command.ExecuteNonQuery()
+        Dim reader As SqlDataReader = command.ExecuteReader(CommandBehavior.CloseConnection)
 
-    End Sub
+        If reader.HasRows Then
+            reader.Close()
+            command.Connection.Dispose()
+            command.Dispose()
+            Return False
+        Else
+            reader.Close()
+            command.Connection.Dispose()
+            command.Dispose()
+            Return True
+        End If
+
+    End Function
+
+    Private Function checkifIDthere(ByVal user As String) As Boolean
+        sql = "Select * From Users Where UserID = '" & user & "';"
+        Dim command As SqlCommand = New SqlCommand(sql)
+        command.CommandType = CommandType.Text
+        command.Connection = New SqlConnection(constring)
+        command.Connection.Open()
+        command.ExecuteNonQuery()
+        Dim reader As SqlDataReader = command.ExecuteReader(CommandBehavior.CloseConnection)
+
+        If reader.HasRows Then
+            reader.Close()
+            command.Connection.Dispose()
+            command.Dispose()
+            Return False
+        Else
+            reader.Close()
+            command.Connection.Dispose()
+            command.Dispose()
+            Return True
+        End If
+
+    End Function
+
+    Private Function GenerateHash(ByVal SourceText As String) As String
+        Dim UniEnc As New UnicodeEncoding()
+        Dim ByteSourceText() As Byte = UniEnc.GetBytes(SourceText)
+        Dim Md5 As New MD5CryptoServiceProvider()
+        Dim ByteHash() As Byte = Md5.ComputeHash(ByteSourceText)
+        Return Convert.ToBase64String(ByteHash)
+    End Function
+
 End Class

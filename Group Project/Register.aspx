@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="AddUser.aspx.vb" Inherits="Group_Project.AddUser" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Register.aspx.vb" Inherits="Group_Project.Register1" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,14 +8,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <table = cellpadding=3>
+    <div id = "registerpanel" runat = "server">
+        <table = cellpadding="3">
         
-        <tr>
-        <td align="right"><b>User ID</b></td>
-        <td><asp:TextBox ID="txtID" runat="server"></asp:TextBox></td>
-        </tr>
-
         <tr>
             <td align=right><b>First name:</b></td>
             <td><asp:DropDownList ID="dlstTitle" runat="server">
@@ -56,13 +51,6 @@
         </tr>
 
         <tr>
-            <td align=right><b>Administrative Access Rights:</b></td>
-            <td>
-                <asp:CheckBox ID="chkadmin" runat="server" />
-            </td>
-        </tr>
-
-        <tr>
             <td align=right><b>Address:</b></td>
             <asp:Label ID="Label5" runat="server" Text="Adress"></asp:Label>
             <td><asp:TextBox ID="txtAdress" runat="server" Width="222px" Height="57px"/><br /></td>
@@ -70,22 +58,16 @@
         
         <tr>       
             <td>
-                 <asp:Button ID="cmdAdd" runat="server" Text="Submit" />
+                <asp:Button ID="cmdAdd" runat="server" Text="Submit" />
             </td>
+
             <td>
                 <asp:Label ID="lblreg" runat="server" Text="Label" BorderStyle="Dotted" 
                     Visible="False"></asp:Label>
+                <asp:Label ID="lbldone" runat="server" Text="Label" Visible="False"><br/></asp:Label>
             </td>
         </tr>
 
-        <tr>
-            <td>
-                <asp:Button ID="cmdGet" runat="server" Text="GET" />
-            </td>
-            <td>
-                <asp:Label ID="lblGet" runat="server" Text="Retrieve user Information"></asp:Label>
-            </td>
-        </tr>
         </table>
     </div>
     </form>

@@ -7,7 +7,7 @@ Public Class Login1
     Private sql As String
     Private cmd As SqlCommand
     Private dr As SqlDataReader
-    Private constring As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|Products.mdf;Integrated Security=True;User Instance=True"
+    Private constring As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|Electronics.mdf;Integrated Security=True;User Instance=True"
 
     Private Function GenerateHash(ByVal SourceText As String) As String
         Dim UniEnc As New UnicodeEncoding()

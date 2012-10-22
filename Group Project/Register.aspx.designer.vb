@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class AddUser
+Partial Public Class Register1
 
     '''<summary>
     '''form1 control.
@@ -23,13 +23,13 @@ Partial Public Class AddUser
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''txtID control.
+    '''registerpanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtID As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents registerpanel As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''dlstTitle control.
@@ -104,15 +104,6 @@ Partial Public Class AddUser
     Protected WithEvents txtAge As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''chkadmin control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents chkadmin As Global.System.Web.UI.WebControls.CheckBox
-
-    '''<summary>
     '''Label5 control.
     '''</summary>
     '''<remarks>
@@ -149,20 +140,11 @@ Partial Public Class AddUser
     Protected WithEvents lblreg As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''cmdGet control.
+    '''lbldone control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents cmdGet As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''lblGet control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblGet As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbldone As Global.System.Web.UI.WebControls.Label
 End Class

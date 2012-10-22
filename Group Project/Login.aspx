@@ -15,7 +15,8 @@
         Password<br />
         <asp:TextBox ID="Password" runat="server"></asp:TextBox>
         <asp:Label ID="Label1" runat="server" BorderStyle="Dotted" ForeColor="#FF3300" 
-            Text="Login Failed" Visible="False"></asp:Label>
+            Text="Login Failed" Visible="False"></asp:Label><br/>
+            If you're not registered, why not regester <a href="Register.aspx">here?</a>
     </div>
     </form>
 </body>
