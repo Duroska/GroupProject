@@ -13,9 +13,14 @@
     <div class="page">
         <div class="header">
             <div class="title">
-                <h1>
+                <h1 style="color: #0000CC">
                     Power Technologies
-                </h1>
+                </h1> 
+                <h2 align="center" 
+                    style="font-family: 'Times New Roman', Times, serif; text-decoration: underline; color: #0000CC">
+                All of your technology needs
+                </h2>
+                <br/>
             </div>
             <div class="loginDisplay">
                 
@@ -46,6 +51,23 @@
     <br/>The web site holds no responsibility for any harm or maul function on the product
     <br/>This website will not be held responsible for any damage to personal property and personal ingury of any kind
     </p>
+    <asp:Image ID="Image1" runat="server" ImageUrl="~/Styles/logo.png" 
+        Height="74px" Width="74px" />
+        <asp:Label ID="Label1" runat="server" Text="Team D_Buggers" 
+        ForeColor="#009900"></asp:Label>
     </form>
 </body>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35784206-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
 </html>

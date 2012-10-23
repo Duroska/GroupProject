@@ -8,7 +8,7 @@ Public Class AddtoCart
     Private sql As String
     Private command As SqlCommand
     Private dr As SqlDataReader
-    Private constring As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|Products.mdf;Integrated Security=True;User Instance=True"
+    Private constring As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|Electronics.mdf;Integrated Security=True;User Instance=True"
     Private Stock As Integer
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
